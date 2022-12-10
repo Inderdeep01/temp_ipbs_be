@@ -8,6 +8,9 @@ router.post('/',(req,res)=>{
     const reqid = req.body.id
     const oldPwd = req.body.oldPwd
     const newPwd = req.body.newPwd
+    if(oldPwd===newPwd){
+        res.status(401).json({msg:'Invalid Request'})
+    }
     Signup.find({id:reqid})
         .then(result=>{
             if(result.length===0){

@@ -5,7 +5,11 @@ const bcrypt = require('bcrypt')
 const Signup = require('../models/signup')
 
 router.post('/',(req,res)=>{
-    const reqid = req.body.id
+    if(req.body.id=='' || req.body.pwd==''){
+        res.status(401).json({msg:'Invalid Request!'})
+    }
+    else{
+        const reqid = req.body.id
     Signup.find({id:reqid})
         .then(result=>{
             if(result.length === 0){
@@ -28,6 +32,7 @@ router.post('/',(req,res)=>{
             }
         })
         .catch(err=>res.status(500).json({msg:'Internal Server Error'}))
+    }
 })
 
 module.exports = router

@@ -9,6 +9,7 @@ const delteHandler = require('./routes/delete')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
+mongoose.set('strictQuery',true)
 
 app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({extended:true}))
