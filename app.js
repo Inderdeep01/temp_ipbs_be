@@ -20,14 +20,13 @@ mongoose.connect(process.env.MONGOOSE)
     .then(console.log('Connection Successful'))
     .catch(err=>console.log(err))
 
-
-app.use('/',(req,res)=>{
-    res.status(200).json({msg:'Welcome to home route!'})
-})
 app.use('/signup',signupHandler)
 app.use('/login',loginHandler)
 app.use('/changePwd',changePwdHandler)
 app.use('/delete',delteHandler)
+app.use('/',(req,res)=>{
+    res.status(200).json({msg:'Welcome to home route!'})
+})
 
 app.use((req,res)=>{
     res.status(404).json({msg:'No resource found!'})
