@@ -31,7 +31,12 @@ router.post('/',(req,res)=>{
                 res.status(403).json({warning:'User already Exists!'})
             }
         })
-        .catch(err=>res.status(500).json({msg:'Internal Server Error'}))
+        .catch(err=>{
+            try{
+                res.status(500).json({msg:'Internal Server Error'})
+            }
+            catch{}
+        })
     }
 })
 

@@ -8,7 +8,7 @@ router.post('/',(req,res)=>{
     const reqid = req.body.id
     const oldPwd = req.body.oldPwd
     const newPwd = req.body.newPwd
-    if(oldPwd===newPwd){
+    if(oldPwd===newPwd || oldPwd==='' || newPwd===''){
         res.status(401).json({msg:'Invalid Request'})
     }
     Signup.find({id:reqid})
@@ -39,10 +39,20 @@ router.post('/',(req,res)=>{
                             res.status(401).json({msg:'Unauthorised'})
                         }
                     })
-                    .catch(err=>res.status(503).json({msg:'Server Down'}))
+                    .catch(err=>{
+                        try{
+                            res.status(503).json({msg:'Server Down'})
+                        }
+                        catch{}
+                    })
             }
         })
-        .catch(err=>res.status(500).json({msg:'Internal Server Error'}))
+        .catch(err=>{
+            try{
+                res.status(500).json({info:'Internal Srver Error'})
+            }
+            catch{}
+        })
 })
 
 module.exports = router

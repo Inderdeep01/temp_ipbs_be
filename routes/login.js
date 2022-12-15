@@ -28,10 +28,20 @@ router.post('/',(req,res)=>{
                             res.status(403).json({msg:'Invalid Credentials!'})
                         }
                     })
-                    .catch(err=>res.status(500).json({info:'Internal Srver Error'}))
+                    .catch(err=>{
+                        try{
+                            res.status(500).json({info:'Internal Srver Error'})
+                        }
+                        catch{}
+                    })
             }
         })
-        .catch(err=>res.status(500).json({msg:'Internal Server Error!'}))
+        .catch(err=>{
+            try{
+                res.status(500).json({info:'Internal Srver Error'})
+            }
+            catch{}
+        })
     }
 })
 
