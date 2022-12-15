@@ -22,10 +22,10 @@ mongoose.connect(process.env.MONGOOSE)
 
 app.options('*',cors())
 
-app.use('/signup',cors(),signupHandler)
-app.use('/login',cors(),loginHandler)
-app.use('/changePwd',cors(),changePwdHandler)
-app.use('/delete',cors(),delteHandler)
+app.use('/signup',signupHandler)
+app.use('/login',loginHandler)
+app.use('/changePwd',changePwdHandler)
+app.use('/delete',delteHandler)
 app.use('/',(req,res)=>{
     res.status(200).json({msg:'Welcome to home route!'})
 })
