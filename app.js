@@ -20,6 +20,8 @@ mongoose.connect(process.env.MONGOOSE)
     .then(console.log('Connection Successful'))
     .catch(err=>console.log(err))
 
+app.options('*',cors())
+
 app.use('/signup',cors(),signupHandler)
 app.use('/login',cors(),loginHandler)
 app.use('/changePwd',cors(),changePwdHandler)

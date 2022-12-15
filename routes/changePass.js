@@ -1,11 +1,10 @@
 const express = require('express')
 const router = express.Router()
 const bcrypt = require('bcrypt')
-const cors = require('cors')
 
 const Signup = require('../models/signup')
 
-router.post('/',cors(),(req,res)=>{
+router.post('/',(req,res)=>{
     const reqid = req.body.id
     const oldPwd = req.body.oldPwd
     const newPwd = req.body.newPwd
