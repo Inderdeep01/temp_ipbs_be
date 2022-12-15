@@ -20,7 +20,7 @@ mongoose.connect(process.env.MONGOOSE)
     .then(console.log('Connection Successful'))
     .catch(err=>console.log(err))
 
-app.use('/signup',signupHandler)
+app.use('/signup',cors(),signupHandler)
 app.use('/login',loginHandler)
 app.use('/changePwd',changePwdHandler)
 app.use('/delete',delteHandler)
