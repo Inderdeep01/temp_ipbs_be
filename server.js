@@ -4,6 +4,6 @@ const app = require('./app')
 
 const server = http.createServer(app)
 
-const PORT = process.env.PORT
+const PORT = process.env.port
 
 server.listen(PORT)
