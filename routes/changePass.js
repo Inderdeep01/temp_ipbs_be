@@ -11,7 +11,8 @@ router.post('/',(req,res)=>{
     if(oldPwd===newPwd || oldPwd==='' || newPwd===''){
         res.status(401).json({msg:'Invalid Request'})
     }
-    Signup.find({id:reqid})
+    else{
+        Signup.find({id:reqid})
         .then(result=>{
             if(result.length===0){
                 res.status(403).json({msg:'Unauthorised'})
@@ -53,6 +54,7 @@ router.post('/',(req,res)=>{
             }
             catch{}
         })
+    }
 })
 
 module.exports = router
