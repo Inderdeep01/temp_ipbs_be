@@ -1,5 +1,4 @@
 const web3 = require('./web3')
-
 /* createWallet utility function
 -> This function returns an encrypted (new)wallet string
 -> Accepts 1 parameter:
